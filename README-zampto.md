@@ -8,16 +8,16 @@
 
 - PRIVATE_REPO_TOKEN （用于读取私库的 token，可跟其他库共用）
 
-- ZAMPTO_BATCH （zampto 的账号环境变量）
+- ZAMPTO_BATCH （zampto 的账号环境变量，不需要传入server_id）
 
 ```
-ZAMPTO_BATCH=a1@example.com,pass1,218445
-a2@example.com,pass2,998877,123456:AAxxxxxx,123456789
+ZAMPTO_BATCH=a1@example.com,pass1
+a2@example.com,pass2,123456:AAxxxxxx,123456789
 ```
 
 
 ### 格式为:
- email,password,server_id,tg_bot_token,tg_chat_id
+ email,password,tg_bot_token,tg_chat_id
 
 
 每行一套数据：
@@ -26,11 +26,13 @@ a2@example.com,pass2,998877,123456:AAxxxxxx,123456789
 
 2、发 TG：email,password,server_id,tg_bot_token,tg_chat_id
 
-- HY2_PROXY_URL （可选，Hysteria2 代理 URL）
+- ZAMPTO_HY2_PROXY_URL （可选，Hysteria2 代理 URL，可自行改成本仓库里其他项目共用的HY2_PROXY_URL，自己去下面的红框里面改这个红框变量的secrets.ZAMPTO_HY2_PROXY_URL 即可，我这里不跟其他一样的原因是，zamp会检测vpn代理，并不是所有的hy2他都会承认，有些hy2节点会被检测识别为代理，所以我为了不影响其他的，这里单独用了一个 ZAMPTO_HY2_PROXY_URL 环境变量。）
 
 ```
 HY2_PROXY_URL='hysteria2://[auth]@[host]:[port]/?sni=xxx&insecure=1&alpn=h3'
 ```
+<img width="969" height="498" alt="CleanShot 2026-03-03 at 19 07 34" src="https://github.com/user-attachments/assets/d2906f73-4a6f-449c-8d38-661fc70c3980" />
+
 ### 如果不设置此环境变量，脚本将使用直连模式
 
 - SOCKS_PORT （可选，SOCKS5 端口，默认 51080）
